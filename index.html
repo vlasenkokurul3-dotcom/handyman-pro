@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#10263f">
+<title>Handyman Pro — Business Manager</title>
+<style>
+:root{--navy:#10263f;--navy2:#193a5b;--blue:#2e6fd8;--bg:#f3f6fa;--card:#fff;--text:#182230;--muted:#68778b;--line:#e4eaf1;--green:#16845b;--red:#c74747;--amber:#a66a09;--radius:18px}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;color:var(--text)}button,input,select,textarea{font:inherit}button{cursor:pointer}
+.app{max-width:1100px;margin:auto;min-height:100dvh;padding-bottom:92px}.top{background:linear-gradient(135deg,var(--navy),var(--navy2));color:white;padding:22px 18px 24px;border-radius:0 0 25px 25px}.topline{display:flex;align-items:center;justify-content:space-between;gap:10px}.brand{font-weight:800;letter-spacing:.2px;font-size:20px}.brand span{color:#8db9ff}.eyebrow{font-size:11px;letter-spacing:1.4px;text-transform:uppercase;opacity:.72;margin-bottom:5px}.top h1{font-size:27px;line-height:1.15;margin:18px 0 8px}.top p{color:#d5e1f0;margin:0;max-width:560px}.period{border:1px solid #55718d;background:#ffffff12;color:white;padding:8px 10px;border-radius:10px}
+main{padding:18px 14px;max-width:1000px;margin:auto}.sectionhead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:18px 2px 12px}.sectionhead h2{font-size:19px;margin:0}.muted{color:var(--muted)}.small{font-size:12px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.metric,.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px;box-shadow:0 3px 14px #18324b08}.metric .label{font-size:12px;color:var(--muted)}.metric .value{font-size:24px;font-weight:800;margin:7px 0 2px;letter-spacing:-.5px}.metric .sub{font-size:11px;color:var(--muted)}.metric .symbol{float:right;background:#eaf2ff;color:var(--blue);width:32px;height:32px;display:grid;place-items:center;border-radius:10px;font-weight:800}.metric.profit .symbol{background:#e5f7ef;color:var(--green)}.metric.cost .symbol{background:#fff1e7;color:#bc641d}
+.actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.action{background:white;border:1px solid var(--line);border-radius:15px;padding:15px;text-align:left;display:flex;gap:12px;align-items:center;color:var(--text);min-height:74px}.action .ico{background:#edf3ff;color:var(--blue);width:42px;height:42px;display:grid;place-items:center;border-radius:12px;font-size:19px;flex-shrink:0}.action strong{display:block;font-size:14px}.action small{display:block;color:var(--muted);font-size:11px;margin-top:3px}
+.btn{border:0;border-radius:12px;padding:12px 15px;background:var(--blue);color:white;font-weight:700;min-height:44px}.btn.secondary{background:#edf3fa;color:var(--navy)}.btn.outline{background:white;color:var(--navy);border:1px solid var(--line)}.btn.danger{background:#fff0f0;color:var(--red)}.btn.smallbtn{padding:8px 11px;min-height:36px;font-size:12px}.full{width:100%}.row{display:flex;align-items:center;gap:8px}.between{justify-content:space-between}.wrap{flex-wrap:wrap}
+.nav{position:fixed;z-index:20;bottom:0;left:0;right:0;background:#ffffffed;backdrop-filter:blur(14px);border-top:1px solid var(--line);padding:7px max(8px,env(safe-area-inset-left)) calc(7px + env(safe-area-inset-bottom));display:flex;justify-content:center}.navinner{display:grid;grid-template-columns:repeat(5,1fr);width:min(100%,700px);gap:2px}.nav button{border:0;background:transparent;color:#718095;padding:7px 1px;border-radius:12px;font-size:10px;display:flex;flex-direction:column;align-items:center;gap:3px}.nav button span{font-size:20px}.nav button.active{color:var(--blue);background:#edf3ff;font-weight:800}
+.view{display:none}.view.active{display:block}.list{display:grid;gap:10px}.item{background:white;border:1px solid var(--line);border-radius:15px;padding:14px}.itemtitle{font-weight:750}.itemmeta{font-size:12px;color:var(--muted);margin-top:4px}.status{font-size:10px;font-weight:800;letter-spacing:.4px;border-radius:20px;padding:5px 8px;background:#edf3fa;color:#456}.status.paid,.status.completed{background:#e3f7ed;color:#12714c}.status.pending,.status.in-progress{background:#fff3d8;color:#8b5a00}.status.overdue,.status.cancelled{background:#ffe9e9;color:#a12e2e}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:flex;flex-direction:column;gap:6px}.field.fullfield{grid-column:1/-1}.field label{font-size:12px;font-weight:700;color:#4f5d70}.field input,.field select,.field textarea{width:100%;border:1px solid #dbe3ec;border-radius:11px;padding:12px;background:white;min-height:46px;color:var(--text)}.field textarea{min-height:85px;resize:vertical}.formactions{display:flex;gap:8px;margin-top:16px}.formactions>*{flex:1}.empty{text-align:center;padding:30px 14px;color:var(--muted)}.empty .emoji{font-size:30px;margin-bottom:8px}.tablewrap{overflow:auto}.table{width:100%;border-collapse:collapse;min-width:500px}.table th,.table td{text-align:left;padding:11px 9px;border-bottom:1px solid var(--line);font-size:12px}.table th{color:var(--muted);font-weight:700}.pill{background:#f0f4f8;border-radius:20px;padding:5px 9px;font-size:11px;color:#536276}.note{background:#eef5ff;border:1px solid #d9e8ff;border-radius:13px;padding:12px;color:#35567e;font-size:12px;margin-top:12px}.dangertext{color:var(--red)}.toast{position:fixed;left:16px;right:16px;bottom:100px;z-index:40;background:#142b43;color:white;border-radius:13px;padding:13px 16px;display:none;box-shadow:0 8px 30px #0002}.toolbar{display:flex;gap:8px;flex-wrap:wrap}.search{width:100%;padding:12px;border:1px solid var(--line);border-radius:12px;background:white;margin-bottom:10px}
+@media(min-width:700px){.top{padding:28px 30px}.top h1{font-size:34px}main{padding:24px}.grid{grid-template-columns:repeat(4,minmax(0,1fr))}.actions{grid-template-columns:repeat(4,minmax(0,1fr))}.nav{top:0;bottom:auto;position:sticky;border-top:0;border-bottom:1px solid var(--line);padding:8px}.navinner{width:100%;max-width:1000px}.app{padding-bottom:25px}.nav button{font-size:12px;flex-direction:row;justify-content:center;padding:10px}.nav button span{font-size:17px}.formgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:380px){.metric .value{font-size:21px}.metric{padding:13px}.top h1{font-size:24px}.field input,.field select{padding:10px}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top">
+ <div class="topline"><div><div class="eyebrow">Your home-service business</div><div class="brand">HANDYMAN <span>PRO</span></div></div><button class="period" onclick="exportData()">Export data ↗</button></div>
+ <h1>Run your business.<br>Not your paperwork.</h1>
+ <p>Pricing, clients, jobs, estimates and expenses — all in one simple workspace.</p>
+</header>
+<nav class="nav"><div class="navinner">
+<button class="active" data-view="dashboard" onclick="showView('dashboard',this)"><span>⌂</span>Home</button>
+<button data-view="pricing" onclick="showView('pricing',this)"><span>＄</span>Pricing</button>
+<button data-view="clients" onclick="showView('clients',this)"><span>♙</span>Clients</button>
+<button data-view="jobs" onclick="showView('jobs',this)"><span>▣</span>Jobs</button>
+<button data-view="more" onclick="showView('more',this)"><span>☰</span>More</button>
+</div></nav>
+<main>
+<section class="view active" id="view-dashboard">
+ <div class="sectionhead"><div><h2>Business overview</h2><div class="muted small">Your numbers at a glance</div></div><button class="btn smallbtn" onclick="openForm('job')">＋ New job</button></div>
+ <div class="grid">
+  <div class="metric"><span class="symbol">$</span><div class="label">Estimated revenue</div><div class="value" id="mRevenue">$0</div><div class="sub">From active and completed jobs</div></div>
+  <div class="metric profit"><span class="symbol">↗</span><div class="label">Estimated profit</div><div class="value" id="mProfit">$0</div><div class="sub">Revenue less estimated costs</div></div>
+  <div class="metric cost"><span class="symbol">↘</span><div class="label">Expenses recorded</div><div class="value" id="mExpenses">$0</div><div class="sub">Actual expenses entered</div></div>
+  <div class="metric"><span class="symbol">▣</span><div class="label">Open jobs</div><div class="value" id="mJobs">0</div><div class="sub">Not yet completed or cancelled</div></div>
+ </div>
+ <div class="sectionhead"><h2>Quick actions</h2></div>
+ <div class="actions">
+  <button class="action" onclick="openForm('estimate')"><span class="ico">▤</span><span><strong>Create estimate</strong><small>Price a new project</small></span></button>
+  <button class="action" onclick="openForm('client')"><span class="ico">♙</span><span><strong>Add client</strong><small>Save contact details</small></span></button>
+  <button class="action" onclick="openForm('expense')"><span class="ico">＄</span><span><strong>Record expense</strong><small>Track business costs</small></span></button>
+  <button class="action" onclick="showView('documents')"><span class="ico">▧</span><span><strong>Documents</strong><small>Invoices and estimates</small></span></button>
+ </div>
+ <div class="sectionhead"><h2>Recent jobs</h2><button class="btn secondary smallbtn" onclick="showView('jobs')">View all</button></div>
+ <div id="recentJobs" class="list"></div>
+ <div class="note">🔒 Your entries are saved in this browser on this device. Use <b>Export data</b> regularly to keep a backup. This starter version does not sync across devices.</div>
+</section>
+<section class="view" id="view-pricing">
+ <div class="sectionhead"><div><h2>Pricing calculator</h2><div class="muted small">Build a quote with your real costs</div></div></div>
+ <div class="card">
+ <div class="formgrid">
+  <div class="field fullfield"><label>Job / service name</label><input id="pName" placeholder="e.g. Install ceiling fan"></div>
+  <div class="field"><label>Estimated labor hours</label><input id="pHours" type="number" min="0" step=".25" value="3" oninput="calcPrice()"></div>
+  <div class="field"><label>Your customer hourly rate ($)</label><input id="pRate" type="number" min="0" step="1" value="75" oninput="calcPrice()"></div>
+  <div class="field"><label>Material cost ($)</label><input id="pMaterials" type="number" min="0" step=".01" value="80" oninput="calcPrice()"></div>
+  <div class="field"><label>Material markup (%)</label><input id="pMarkup" type="number" min="0" step="1" value="20" oninput="calcPrice()"></div>
+  <div class="field"><label>Other direct costs ($)</label><input id="pOther" type="number" min="0" step=".01" value="25" oninput="calcPrice()"></div>
+  <div class="field"><label>Overhead allocation ($)</label><input id="pOverhead" type="number" min="0" step=".01" value="20" oninput="calcPrice()"></div>
+  <div class="field"><label>Contingency (%)</label><input id="pContingency" type="number" min="0" step="1" value="5" oninput="calcPrice()"></div>
+  <div class="field"><label>Your labor cost per hour ($)</label><input id="pLaborCost" type="number" min="0" step="1" value="30" oninput="calcPrice()"></div>
+ </div>
+ <div class="sectionhead"><h2>Suggested quote</h2></div>
+ <div class="grid">
+  <div class="metric"><div class="label">Customer price</div><div class="value" id="pQuote">$0</div></div>
+  <div class="metric"><div class="label">Estimated total cost</div><div class="value" id="pCost">$0</div></div>
+  <div class="metric profit"><div class="label">Estimated profit</div><div class="value" id="pProfit">$0</div></div>
+  <div class="metric"><div class="label">Profit margin</div><div class="value" id="pMargin">0%</div></div>
+ </div>
+ <div class="formactions"><button class="btn full" onclick="savePriceAsEstimate()">Save as estimate</button></div>
+ <div class="note">This is a planning estimate, not tax or legal advice. Check local costs, permits, insurance, taxes and market rates before quoting a customer.</div>
+ </div>
+</section>
+<section class="view" id="view-clients">
+ <div class="sectionhead"><div><h2>Clients</h2><div class="muted small">Keep customer details organized</div></div><button class="btn smallbtn" onclick="openForm('client')">＋ Add client</button></div>
+ <input class="search" id="clientSearch" placeholder="Search clients…" oninput="renderClients()">
+ <div id="clientList" class="list"></div>
+</section>
+<section class="view" id="view-jobs">
+ <div class="sectionhead"><div><h2>Jobs & projects</h2><div class="muted small">Track every project from quote to completion</div></div><button class="btn smallbtn" onclick="openForm('job')">＋ New job</button></div>
+ <input class="search" id="jobSearch" placeholder="Search jobs…" oninput="renderJobs()">
+ <div id="jobList" class="list"></div>
+</section>
+<section class="view" id="view-more">
+ <div class="sectionhead"><h2>Business tools</h2></div>
+ <div class="actions">
+  <button class="action" onclick="showView('estimates')"><span class="ico">▤</span><span><strong>Estimates</strong><small>Quotes you have prepared</small></span></button>
+  <button class="action" onclick="showView('expenses')"><span class="ico">＄</span><span><strong>Expenses</strong><small>Actual business costs</small></span></button>
+  <button class="action" onclick="showView('documents')"><span class="ico">▧</span><span><strong>Invoices</strong><small>Create a printable invoice</small></span></button>
+  <button class="action" onclick="showView('settings')"><span class="ico">⚙</span><span><strong>Settings & backup</strong><small>Business profile and data</small></span></button>
+ </div>
+ <div class="card" style="margin-top:14px"><h3 style="margin-top:0">How to use Handyman Pro</h3><p class="muted">1. Set your rates in Pricing.<br>2. Add your clients.<br>3. Create jobs and estimates.<br>4. Record expenses as you go.<br>5. Review revenue and estimated profit on Home.<br>6. Export a backup regularly.</p></div>
+</section>
+<section class="view" id="view-estimates">
+ <div class="sectionhead"><h2>Estimates</h2><button class="btn smallbtn" onclick="openForm('estimate')">＋ New</button></div><div id="estimateList" class="list"></div>
+</section>
+<section class="view" id="view-expenses">
+ <div class="sectionhead"><h2>Expenses</h2><button class="btn smallbtn" onclick="openForm('expense')">＋ Add expense</button></div>
+ <div class="card" style="margin-bottom:12px"><div class="label muted">Total expenses recorded</div><div class="value" id="expenseTotal">$0</div></div><div id="expenseList" class="list"></div>
+</section>
+<section class="view" id="view-documents">
+ <div class="sectionhead"><div><h2>Documents</h2><div class="muted small">Create a printable invoice or estimate</div></div></div>
+ <div class="card">
+ <div class="formgrid">
+  <div class="field fullfield"><label>Business name</label><input id="docBusiness" placeholder="Your business name"></div>
+  <div class="field"><label>Document type</label><select id="docType"><option>INVOICE</option><option>ESTIMATE</option></select></div>
+  <div class="field"><label>Document number</label><input id="docNumber" placeholder="INV-001"></div>
+  <div class="field"><label>Customer name</label><input id="docCustomer" placeholder="Customer full name"></div>
+  <div class="field"><label>Customer email / phone</label><input id="docContact" placeholder="Contact details"></div>
+  <div class="field fullfield"><label>Job description</label><textarea id="docDesc" placeholder="Describe the work and materials"></textarea></div>
+  <div class="field"><label>Labor ($)</label><input id="docLabor" type="number" value="0" min="0"></div>
+  <div class="field"><label>Materials ($)</label><input id="docMaterials" type="number" value="0" min="0"></div>
+  <div class="field"><label>Other ($)</label><input id="docOther" type="number" value="0" min="0"></div>
+  <div class="field"><label>Tax (%)</label><input id="docTax" type="number" value="0" min="0"></div>
+  <div class="field fullfield"><label>Payment terms / notes</label><textarea id="docTerms" placeholder="e.g. Due within 14 days. Thank you for your business!"></textarea></div>
+ </div>
+ <div class="formactions"><button class="btn" onclick="printDocument()">Preview / Print</button><button class="btn secondary" onclick="downloadDocument()">Download HTML</button></div>
+ </div>
+ <div class="note">Print preview can be saved as PDF using your browser's print options. Confirm applicable tax rules before sending documents.</div>
+</section>
+<section class="view" id="view-settings">
+ <div class="sectionhead"><h2>Settings & backup</h2></div>
+ <div class="card">
+  <h3 style="margin-top:0">Business profile</h3>
+  <div class="formgrid">
+   <div class="field fullfield"><label>Business name</label><input id="sBusiness" placeholder="e.g. Smith Home Services"></div>
+   <div class="field"><label>Phone</label><input id="sPhone" placeholder="(555) 555-0123"></div>
+   <div class="field"><label>Email</label><input id="sEmail" type="email" placeholder="you@example.com"></div>
+   <div class="field fullfield"><label>Business address</label><input id="sAddress" placeholder="Street, city, state, ZIP"></div>
+  </div>
+  <div class="formactions"><button class="btn full" onclick="saveSettings()">Save profile</button></div>
+ </div>
+ <div class="card" style="margin-top:12px">
+  <h3 style="margin-top:0">Data management</h3><p class="muted small">Data is stored locally in this browser. Export a backup before changing devices or clearing browser data.</p>
+  <div class="toolbar"><button class="btn" onclick="exportData()">Export backup</button><button class="btn secondary" onclick="document.getElementById('importFile').click()">Import backup</button><button class="btn danger" onclick="resetData()">Reset all data</button></div>
+  <input type="file" id="importFile" accept="application/json,.json" hidden onchange="importData(event)">
+ </div>
+</section>
+<div id="modal" style="display:none;position:fixed;inset:0;z-index:30;background:#081b2db0;overflow:auto;padding:18px 12px">
+ <div class="card" style="max-width:650px;margin:20px auto;padding:18px">
+  <div class="row between"><h2 id="modalTitle" style="margin:0 0 14px">Add item</h2><button class="btn secondary smallbtn" onclick="closeModal()">✕ Close</button></div>
+  <form id="modalForm" onsubmit="submitForm(event)"><div id="modalFields" class="formgrid"></div><div class="formactions"><button type="button" class="btn secondary" onclick="closeModal()">Cancel</button><button class="btn" type="submit">Save</button></div></form>
+ </div>
+</div>
+<div class="toast" id="toast"></div>
+</main>
+</div>
+<script>
+const KEY='handymanProDataV1';
+const blank=()=>({clients:[],jobs:[],estimates:[],expenses:[],settings:{business:'',phone:'',email:'',address:''},counter:1});
+let db=loadDB(), formType='';
+function loadDB(){try{return {...blank(),...JSON.parse(localStorage.getItem(KEY)||'{}')}}catch(e){return blank()}}
+function persist(){localStorage.setItem(KEY,JSON.stringify(db));renderAll()}
+function money(n){return new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:2}).format(Number(n)||0)}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function uid(prefix){return prefix+'-'+String(db.counter++).padStart(3,'0')}
+function toast(msg){let t=document.getElementById('toast');t.textContent=msg;t.style.display='block';setTimeout(()=>t.style.display='none',2600)}
+const views=['dashboard','pricing','clients','jobs','more','estimates','expenses','documents','settings'];
+function showView(name,btn){document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.id==='view-'+name));document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x.dataset.view===name||(name==='estimates'||name==='expenses'||name==='documents'||name==='settings')&&x.dataset.view==='more'));if(name==='settings')fillSettings();window.scrollTo({top:0,behavior:'smooth'});renderAll()}
+function calcPrice(){let v=id=>Math.max(0,Number(document.getElementById(id).value)||0);let hours=v('pHours'),rate=v('pRate'),mat=v('pMaterials'),markup=v('pMarkup')/100,other=v('pOther'),over=v('pOverhead'),cont=v('pContingency')/100,laborCost=v('pLaborCost');let labor=hours*rate,matSell=mat*(1+markup),base=labor+matSell+other+over,quote=base*(1+cont),cost=hours*laborCost+mat+other+over,profit=quote-cost,margin=quote?profit/quote*100:0;document.getElementById('pQuote').textContent=money(quote);document.getElementById('pCost').textContent=money(cost);document.getElementById('pProfit').textContent=money(profit);document.getElementById('pMargin').textContent=margin.toFixed(1)+'%';return {name:document.getElementById('pName').value||'Service estimate',hours,rate,materials:mat,markup:markup*100,other,overhead:over,contingency:cont*100,laborCost,quote,cost,profit,margin}}
+function savePriceAsEstimate(){let p=calcPrice();p.id=uid('EST');p.date=new Date().toISOString().slice(0,10);p.client='';p.status='Draft';db.estimates.unshift(p);persist();toast('Estimate saved');showView('estimates')}
+function field(name,label,type='text',opts={}){let id='f_'+name;let input=type==='select'?`<select id="${id}" ${opts.required?'required':''}>${opts.options.map(o=>`<option>${esc(o)}</option>`).join('')}</select>`:type==='textarea'?`<textarea id="${id}" placeholder="${esc(opts.placeholder||'')}" ${opts.required?'required':''}></textarea>`:`<input id="${id}" type="${type}" placeholder="${esc(opts.placeholder||'')}" ${opts.required?'required':''} ${opts.step?`step="${opts.step}"`:''} ${opts.min!==undefined?`min="${opts.min}"`:''}>`;return `<div class="field ${opts.full?'fullfield':''}"><label for="${id}">${label}</label>${input}</div>`}
+function openForm(type){formType=type;let titles={client:'Add client',job:'Create job',estimate:'Create estimate',expense:'Record expense'};document.getElementById('modalTitle').textContent=titles[type];let f='';
+if(type==='client')f=field('name','Client name','text',{required:true})+field('phone','Phone')+field('email','Email','email')+field('address','Service address','text',{full:true})+field('notes','Notes','textarea',{full:true});
+if(type==='job')f=field('title','Job title','text',{required:true})+field('client','Client','select',{options:['Unassigned',...db.clients.map(c=>c.name)]})+field('date','Start date','date')+field('price','Quoted price ($)','number',{min:0,step:'.01'})+field('cost','Estimated cost ($)','number',{min:0,step:'.01'})+field('status','Status','select',{options:['New','Quoted','Scheduled','In progress','Completed','Cancelled']})+field('notes','Job notes','textarea',{full:true});
+if(type==='estimate')f=field('name','Service / project','text',{required:true})+field('client','Client','select',{options:['Unassigned',...db.clients.map(c=>c.name)]})+field('date','Estimate date','date')+field('hours','Labor hours','number',{min:0,step:'.25'})+field('rate','Hourly rate ($)','number',{min:0,step:'.01'})+field('materials','Materials ($)','number',{min:0,step:'.01'})+field('other','Other costs ($)','number',{min:0,step:'.01'})+field('status','Status','select',{options:['Draft','Sent','Approved','Declined']})+field('notes','Scope / notes','textarea',{full:true});
+if(type==='expense')f=field('description','Expense description','text',{required:true})+field('date','Date','date')+field('category','Category','select',{options:['Materials','Tools & equipment','Fuel & travel','Subcontractor','Insurance','Marketing','Software','Office','Other']})+field('amount','Amount ($)','number',{min:0,step:'.01',required:true})+field('job','Related job (optional)','select',{options:['None',...db.jobs.map(j=>j.title)]})+field('notes','Notes','textarea',{full:true});
+document.getElementById('modalFields').innerHTML=f;document.getElementById('modal').style.display='block';let d=document.getElementById('f_date');if(d&&!d.value)d.value=new Date().toISOString().slice(0,10)}
+function closeModal(){document.getElementById('modal').style.display='none'}
+function val(n){return document.getElementById('f_'+n)?.value||''}
+function num(n){return Number(val(n))||0}
+function submitForm(e){e.preventDefault();if(formType==='client')db.clients.unshift({id:uid('CL'),name:val('name'),phone:val('phone'),email:val('email'),address:val('address'),notes:val('notes')});
+if(formType==='job')db.jobs.unshift({id:uid('JOB'),title:val('title'),client:val('client')==='Unassigned'?'':val('client'),date:val('date'),price:num('price'),cost:num('cost'),status:val('status'),notes:val('notes')});
+if(formType==='estimate'){let hours=num('hours'),rate=num('rate'),materials=num('materials'),other=num('other'),quote=hours*rate+materials+other;db.estimates.unshift({id:uid('EST'),name:val('name'),client:val('client')==='Unassigned'?'':val('client'),date:val('date'),hours,rate,materials,other,quote,cost:hours*30+materials+other,profit:quote-(hours*30+materials+other),status:val('status'),notes:val('notes')})}
+if(formType==='expense')db.expenses.unshift({id:uid('EXP'),description:val('description'),date:val('date'),category:val('category'),amount:num('amount'),job:val('job')==='None'?'':val('job'),notes:val('notes')});
+let target={client:'clients',job:'jobs',estimate:'estimates',expense:'expenses'}[formType];persist();closeModal();showView(target);toast('Saved successfully')}
+function badge(s){return `<span class="status ${String(s||'').toLowerCase().replace(/\s+/g,'-')}">${esc(s||'New')}</span>`}
+function renderClients(){let q=(document.getElementById('clientSearch')?.value||'').toLowerCase(),arr=db.clients.filter(c=>(c.name+c.phone+c.email+c.address).toLowerCase().includes(q));document.getElementById('clientList').innerHTML=arr.length?arr.map(c=>`<div class="item"><div class="row between"><div class="itemtitle">${esc(c.name)}</div><button class="btn danger smallbtn" onclick="removeItem('clients','${c.id}')">Delete</button></div><div class="itemmeta">${esc(c.phone)} ${c.email?'· '+esc(c.email):''}</div><div class="itemmeta">${esc(c.address)}</div>${c.notes?`<p class="small muted">${esc(c.notes)}</p>`:''}</div>`).join(''):`<div class="card empty"><div class="emoji">♙</div><b>No clients yet</b><p>Add your first client to get started.</p><button class="btn" onclick="openForm('client')">＋ Add client</button></div>`}
+function renderJobs(){let q=(document.getElementById('jobSearch')?.value||'').toLowerCase(),arr=db.jobs.filter(j=>(j.title+j.client+j.id+j.status).toLowerCase().includes(q));document.getElementById('jobList').innerHTML=arr.length?arr.map(jobCard).join(''):`<div class="card empty"><div class="emoji">▣</div><b>No jobs yet</b><p>Create a job to track price, costs and status.</p><button class="btn" onclick="openForm('job')">＋ Create job</button></div>`}
+function jobCard(j){return `<div class="item"><div class="row between wrap"><div class="itemtitle">${esc(j.title)}</div>${badge(j.status)}</div><div class="itemmeta">${esc(j.id)} ${j.client?'· '+esc(j.client):''} ${j.date?'· '+esc(j.date):''}</div><div class="row between" style="margin-top:12px"><div><div class="small muted">Quoted price</div><b>${money(j.price)}</b></div><div><div class="small muted">Est. profit</div><b>${money((Number(j.price)||0)-(Number(j.cost)||0))}</b></div><button class="btn danger smallbtn" onclick="removeItem('jobs','${j.id}')">Delete</button></div><div class="toolbar" style="margin-top:10px"><select aria-label="Change status" class="pill" onchange="changeStatus('${j.id}',this.value)">${['New','Quoted','Scheduled','In progress','Completed','Cancelled'].map(s=>`<option ${s===j.status?'selected':''}>${s}</option>`).join('')}</select><button class="btn secondary smallbtn" onclick="jobToInvoice('${j.id}')">Create invoice</button></div></div>`}
+function renderEstimates(){let a=db.estimates;document.getElementById('estimateList').innerHTML=a.length?a.map(e=>`<div class="item"><div class="row between wrap"><div class="itemtitle">${esc(e.name)}</div>${badge(e.status)}</div><div class="itemmeta">${esc(e.id)} · ${esc(e.client||'Unassigned client')} · ${esc(e.date||'')}</div><div class="row between" style="margin-top:10px"><b>${money(e.quote)}</b><button class="btn secondary smallbtn" onclick="estimateToDoc('${e.id}')">Make document</button><button class="btn danger smallbtn" onclick="removeItem('estimates','${e.id}')">Delete</button></div></div>`).join(''):`<div class="card empty"><div class="emoji">▤</div><b>No estimates yet</b><p>Use the pricing calculator or create an estimate.</p><button class="btn" onclick="showView('pricing')">Open calculator</button></div>`}
+function renderExpenses(){let a=db.expenses;document.getElementById('expenseTotal').textContent=money(a.reduce((s,e)=>s+Number(e.amount||0),0));document.getElementById('expenseList').innerHTML=a.length?a.map(e=>`<div class="item"><div class="row between"><div class="itemtitle">${esc(e.description)}</div><b>${money(e.amount)}</b></div><div class="itemmeta">${esc(e.date)} · ${esc(e.category)} ${e.job?'· '+esc(e.job):''}</div>${e.notes?`<p class="small muted">${esc(e.notes)}</p>`:''}<div style="text-align:right;margin-top:8px"><button class="btn danger smallbtn" onclick="removeItem('expenses','${e.id}')">Delete</button></div></div>`).join(''):`<div class="card empty"><div class="emoji">＄</div><b>No expenses recorded</b><p>Add costs to keep an eye on profitability.</p><button class="btn" onclick="openForm('expense')">＋ Add expense</button></div>`}
+function renderDashboard(){let revenue=db.jobs.filter(j=>j.status!=='Cancelled').reduce((s,j)=>s+Number(j.price||0),0),costs=db.jobs.filter(j=>j.status!=='Cancelled').reduce((s,j)=>s+Number(j.cost||0),0),expenses=db.expenses.reduce((s,e)=>s+Number(e.amount||0),0),open=db.jobs.filter(j=>!['Completed','Cancelled'].includes(j.status)).length;document.getElementById('mRevenue').textContent=money(revenue);document.getElementById('mProfit').textContent=money(revenue-costs-expenses);document.getElementById('mExpenses').textContent=money(expenses);document.getElementById('mJobs').textContent=open;let r=db.jobs.slice(0,3);document.getElementById('recentJobs').innerHTML=r.length?r.map(jobCard).join(''):`<div class="card empty"><div class="emoji">✨</div><b>Your workspace is ready</b><p>Add a client or create your first job.</p><button class="btn" onclick="openForm('job')">＋ Create first job</button></div>`}
+function renderAll(){renderDashboard();renderClients();renderJobs();renderEstimates();renderExpenses();calcPrice()}
+function removeItem(key,id){if(!confirm('Delete this item? This cannot be undone unless you have a backup.'))return;db[key]=db[key].filter(x=>x.id!==id);persist();toast('Item deleted')}
+function changeStatus(id,status){let j=db.jobs.find(x=>x.id===id);if(j){j.status=status;persist();toast('Job status updated')}}
+function fillSettings(){for(let k of ['business','phone','email','address']){let el=document.getElementById('s'+k[0].toUpperCase()+k.slice(1));if(el)el.value=db.settings[k]||''}}
+function saveSettings(){for(let k of ['business','phone','email','address'])db.settings[k]=document.getElementById('s'+k[0].toUpperCase()+k.slice(1)).value;persist();toast('Profile saved')}
+function exportData(){let blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='handyman-pro-backup.json';a.click();URL.revokeObjectURL(a.href);toast('Backup export started')}
+function importData(e){let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{let d=JSON.parse(r.result);if(!d.clients||!d.jobs||!d.expenses)throw Error();db={...blank(),...d};persist();toast('Backup imported')}catch(err){alert('This backup file is not valid.')}e.target.value=''};r.readAsText(f)}
+function resetData(){if(confirm('Delete ALL saved clients, jobs, estimates and expenses? Export a backup first if needed.')){db=blank();persist();fillSettings();toast('All data reset')}}
+function jobToInvoice(id){let j=db.jobs.find(x=>x.id===id);if(!j)return;showView('documents');document.getElementById('docType').value='INVOICE';document.getElementById('docNumber').value='INV-'+j.id;document.getElementById('docCustomer').value=j.client;document.getElementById('docDesc').value=j.title;document.getElementById('docLabor').value=j.price;document.getElementById('docBusiness').value=db.settings.business}
+function estimateToDoc(id){let e=db.estimates.find(x=>x.id===id);if(!e)return;showView('documents');document.getElementById('docType').value='ESTIMATE';document.getElementById('docNumber').value=e.id;document.getElementById('docCustomer').value=e.client;document.getElementById('docDesc').value=e.name+(e.notes?'\n'+e.notes:'');document.getElementById('docLabor').value=(Number(e.hours)||0)*(Number(e.rate)||0);document.getElementById('docMaterials').value=e.materials||0;document.getElementById('docOther').value=e.other||0;document.getElementById('docBusiness').value=db.settings.business}
+function docHTML(){let v=id=>document.getElementById(id).value,sub=(+v('docLabor')||0)+(+v('docMaterials')||0)+(+v('docOther')||0),tax=sub*(+v('docTax')||0)/100,total=sub+tax;return `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${esc(v('docType'))} ${esc(v('docNumber'))}</title><style>body{font:15px Arial,sans-serif;color:#182230;max-width:780px;margin:40px auto;padding:0 22px}.head{background:#10263f;color:white;padding:24px;border-radius:12px}h1{margin:0 0 5px}table{width:100%;border-collapse:collapse;margin:28px 0}td,th{text-align:left;padding:13px;border-bottom:1px solid #ddd}th{background:#f3f6fa}.right{text-align:right}.total{font-size:24px;font-weight:bold;text-align:right}.muted{color:#667085;white-space:pre-wrap}.terms{margin-top:40px;border-top:1px solid #ddd;padding-top:18px}@media print{body{margin:0 auto}}</style></head><body><div class="head"><h1>${esc(v('docType'))}</h1>${esc(v('docNumber'))}<p>${esc(v('docBusiness')||db.settings.business||'Your Business')}</p></div><p><b>Bill to:</b><br>${esc(v('docCustomer'))}<br>${esc(v('docContact'))}</p><p><b>Description of work</b><br>${esc(v('docDesc')).replace(/\n/g,'<br>')}</p><table><tr><th>Item</th><th class="right">Amount</th></tr><tr><td>Labor</td><td class="right">${money(v('docLabor'))}</td></tr><tr><td>Materials</td><td class="right">${money(v('docMaterials'))}</td></tr><tr><td>Other</td><td class="right">${money(v('docOther'))}</td></tr><tr><td>Tax (${Number(v('docTax'))||0}%)</td><td class="right">${money(tax)}</td></tr></table><div class="total">Total: ${money(total)}</div><div class="terms"><b>Payment terms / notes</b><p class="muted">${esc(v('docTerms'))}</p></div><p class="muted">Thank you for your business.</p><script>window.onload=()=>{}</scr`+`ipt></body></html>`}
+function printDocument(){let w=window.open('','_blank');if(!w){alert('Your browser blocked the document window. Please allow pop-ups, then try again.');return}w.document.open();w.document.write(docHTML());w.document.close();setTimeout(()=>w.print(),400)}
+function downloadDocument(){let blob=new Blob([docHTML()],{type:'text/html'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=(document.getElementById('docType').value.toLowerCase()||'document')+'-'+(document.getElementById('docNumber').value||'draft')+'.html';a.click();URL.revokeObjectURL(a.href)}
+renderAll();fillSettings();
+</script>
+</body>
+</html>
